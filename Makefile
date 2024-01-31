@@ -5,6 +5,9 @@ start:
 test:
 	python qa_chain_test.py
 
+chat:
+	python qa_chain_test.py chat
+
 ingest:
 	python ingest.py
 
