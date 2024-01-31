@@ -1,0 +1,3 @@
+[submodule "ragas_extended"]
+	path = ragas_extended
+	url = https://github.com/inflaton/ragas_extended.git
