@@ -1,3 +1,14 @@
+---
+title: Chat with PCI DSS v4
+emoji: 👀
+colorFrom: indigo
+colorTo: blue
+sdk: gradio
+sdk_version: 3.36.1
+app_file: app.py
+pinned: false
+license: apache-2.0
+---
 # ChatPDF - Talk to Your PDF Files 
 
 This project uses Open AI and open-source large language models (LLMs) to enable you to talk to your own PDF files.
