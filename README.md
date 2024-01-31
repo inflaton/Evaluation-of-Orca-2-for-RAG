@@ -25,6 +25,7 @@ Tech stack used includes LangChain, Gradio, Chroma and FAISS.
 
 1. Check pre-conditions:
 
+- [Git Large File Storage (LFS)](https://git-lfs.com/) must have been installed.
 - Run `python --version` to make sure you're running Python version 3.10 or above.
 - The latest PyTorch with GPU support must have been installed. Here is a sample `conda` command:
 ```
@@ -38,11 +39,13 @@ sudo apt install cmake
 2. Clone the repo
 
 ```
-git clone https://github.com/smu-ai/Evaluation-of-Orca-2-Models-for-Conversational-RAG.git
+git lfs install
+git clone --recursive https://github.com/smu-ai/Evaluation-of-Orca-2-Models-for-Conversational-RAG.git
 ```
 
 
 3. Install packages
+
 
 On Linux/WSL2:
 ```
@@ -68,7 +71,7 @@ python app.py
 
 ## Talk to Your Own PDF Files
 
-- The sample PDF files are downloaded from [PCI DSS official website](https://www.pcisecuritystandards.org/document_library/?category=pcidss) and the corresponding embeddings are stored in folder `data/faiss_1024_512` with FAISS format, which allows you to run locally without any additional effort.
+- The sample PDF files are downloaded from [PCI DSS official website](https://www.pcisecuritystandards.org/document_library/?category=pcidss) and the corresponding embeddings are stored in folders `data/chromadb_1024_512` and `data/faiss_1024_512` with Chroma & FAISS formats respectively, which allows you to run locally without any additional effort.
 
 - You can also put your own PDF files into any folder specified in `SOURCE_PDFS_PATH` and run the command below to generate embeddings which will be stored in folder `FAISS_INDEX_PATH` or `CHROMADB_INDEX_PATH`. If both `*_INDEX_PATH` env vars are set, `FAISS_INDEX_PATH` takes precedence. Make sure the folder specified by `*_INDEX_PATH` doesn't exist; other wise the command will simply try to load index from the folder and do a simple similarity search, as a way to verify if embeddings are generated and stored properly. Please note the HuggingFace Embedding model specified by `HF_EMBEDDINGS_MODEL_NAME` will be used to generate the embeddings.
 
@@ -87,29 +90,27 @@ The source code supports different LLM types - as shown at the top of `.env.exam
 # LLM_MODEL_TYPE=gpt4all-j
 # LLM_MODEL_TYPE=gpt4all
 # LLM_MODEL_TYPE=llamacpp
-LLM_MODEL_TYPE=huggingface
+# LLM_MODEL_TYPE=huggingface
 # LLM_MODEL_TYPE=mosaicml
 # LLM_MODEL_TYPE=stablelm
 # LLM_MODEL_TYPE=openllm
-# LLM_MODEL_TYPE=hftgi
+LLM_MODEL_TYPE=hftgi
 ```
 
-- By default, the app runs `lmsys/fastchat-t5-3b-v1.0` model with HF Transformers, which works well with most PCs/laptops with 32GB or more RAM, without any GPU. It also works on HF Spaces with their free-tier: 2 vCPU, 16GB RAM and 500GB hard disk, though the inference speed is very slow.
+- By default, the app runs `microsoft/orca-2-13b` model with HF Text Generation Interface, which runs on a research server and might be down from time to time.
 
 - Uncomment/comment the above to play with different LLM types. You may also want to update other related env vars. E.g., here's the list of HF models which have been tested with the code:
 
 ```
-# HUGGINGFACE_MODEL_NAME_OR_PATH="databricks/dolly-v2-3b"
-# HUGGINGFACE_MODEL_NAME_OR_PATH="databricks/dolly-v2-7b"
-# HUGGINGFACE_MODEL_NAME_OR_PATH="databricks/dolly-v2-12b"
+# HUGGINGFACE_MODEL_NAME_OR_PATH="microsoft/orca-2-7b"
+HUGGINGFACE_MODEL_NAME_OR_PATH="microsoft/orca-2-13b"
 # HUGGINGFACE_MODEL_NAME_OR_PATH="TheBloke/wizardLM-7B-HF"
 # HUGGINGFACE_MODEL_NAME_OR_PATH="TheBloke/vicuna-7B-1.1-HF"
 # HUGGINGFACE_MODEL_NAME_OR_PATH="nomic-ai/gpt4all-j"
 # HUGGINGFACE_MODEL_NAME_OR_PATH="nomic-ai/gpt4all-falcon"
-HUGGINGFACE_MODEL_NAME_OR_PATH="lmsys/fastchat-t5-3b-v1.0"
+# HUGGINGFACE_MODEL_NAME_OR_PATH="lmsys/fastchat-t5-3b-v1.0"
 # HUGGINGFACE_MODEL_NAME_OR_PATH="meta-llama/Llama-2-7b-chat-hf"
 # HUGGINGFACE_MODEL_NAME_OR_PATH="meta-llama/Llama-2-13b-chat-hf"
 # HUGGINGFACE_MODEL_NAME_OR_PATH="meta-llama/Llama-2-70b-chat-hf"
 ```
 
-The script `test.sh` automates running different LLMs and records the outputs in `data/logs` folder which currently contains a few log files created by previous test runs on Nvidia GeForce RTX 4090, A40 and L40 GPUs.
