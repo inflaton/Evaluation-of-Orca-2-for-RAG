@@ -15,7 +15,7 @@ This project uses Open AI and open-source large language models (LLMs) to enable
 
 ## How it works
 
-We're using an AI design pattern, namely "in-context learning" which uses LLMs off the shelf (i.e., without any fine-tuning), then controls their behavior through clever prompting and conditioning on private “contextual” data, e.g., texts extracted from your PDF files.
+We're using an AI methodology, namely Conversational Retrieval Augmentation (CRAG), which uses LLMs off the shelf (i.e., without any fine-tuning), then controls their behavior through clever prompting and conditioning on private “contextual” data, e.g., texts extracted from your PDF files.
 
 At a very high level, the workflow can be divided into three stages:
 
@@ -25,7 +25,7 @@ At a very high level, the workflow can be divided into three stages:
 
 3. Prompt execution / inference: Once the prompts have been compiled, they are submitted to a pre-trained LLM for inference—including both proprietary model APIs and open-source or self-trained models.
 
-![In-context Learning - Workflow Overview](./assets/Workflow-Overview.png)
+![Conversational Retrieval Augmentation (CRAG) - Workflow Overview](./assets/crag-workflow.png)
 
 Tech stack used includes LangChain, Gradio, Chroma and FAISS. 
 - LangChain is an open-source framework that makes it easier to build scalable AI/LLM apps and chatbots. 
