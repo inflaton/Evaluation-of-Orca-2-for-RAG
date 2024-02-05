@@ -8,6 +8,8 @@ from timeit import default_timer as timer
 
 import gradio as gr
 
+os.environ["USER_CONVERSATION_SUMMARY_BUFFER_MEMORY"] = "true"
+
 from app_modules.init import app_init
 from app_modules.utils import print_llm_response
 
@@ -29,10 +31,13 @@ href = (
 )
 
 title = "Chat with PCI DSS v4"
-examples = [
-    "What's PCI DSS?",
-    "Can you summarize the changes made from PCI DSS version 3.2.1 to version 4.0?",
-]
+
+questions_file_path = os.environ.get("QUESTIONS_FILE_PATH")
+
+# Open the file for reading
+with open(questions_file_path, "r") as file:
+    examples = file.readlines()
+    examples = [example.strip() for example in examples]
 
 description = f"""\
 <div align="left">

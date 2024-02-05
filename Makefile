@@ -5,8 +5,11 @@ start:
 test:
 	python qa_chain_test.py
 
+long-test:
+	python qa_chain_with_memory_test.py 100
+
 chat:
-	python qa_chain_test.py chat
+	python qa_chain_with_memory_test.py chat
 
 ingest:
 	python ingest.py

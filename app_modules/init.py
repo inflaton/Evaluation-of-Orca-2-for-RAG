@@ -1,4 +1,5 @@
 """Main entrypoint for the app."""
+
 import os
 from timeit import default_timer as timer
 from typing import List, Optional
@@ -9,7 +10,6 @@ from langchain.vectorstores.chroma import Chroma
 from langchain.vectorstores.faiss import FAISS
 
 from app_modules.llm_loader import LLMLoader
-from app_modules.llm_qa_chain import QAChain
 from app_modules.utils import get_device_types, init_settings
 
 found_dotenv = find_dotenv(".env")
@@ -26,6 +26,15 @@ if os.environ.get("LANGCHAIN_DEBUG") == "true":
     import langchain
 
     langchain.debug = True
+
+if os.environ.get("USER_CONVERSATION_SUMMARY_BUFFER_MEMORY") == "true":
+    from app_modules.llm_qa_chain_with_memory import QAChain
+
+    print("using llm_qa_chain_with_memory")
+else:
+    from app_modules.llm_qa_chain import QAChain
+
+    print("using llm_qa_chain")
 
 
 def app_init():

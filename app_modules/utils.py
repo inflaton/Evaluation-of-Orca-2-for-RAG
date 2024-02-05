@@ -85,6 +85,10 @@ def print_llm_response(llm_response):
             source["page_content"] if "page_content" in source else source.page_content
         )
 
+    if "chat_history" in llm_response:
+        print("\nChat History:")
+        print(llm_response["chat_history"])
+
 
 def get_device_types():
     print("Running on: ", platform.platform())
