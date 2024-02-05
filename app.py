@@ -67,6 +67,9 @@ def predict(message, history):
             item = (element[0] or "", element[1] or "")
             chat_history.append(item)
 
+    if not chat_history:
+        qa_chain.reset()
+
     q = Queue()
     result = Queue()
     t = Thread(target=task, args=(message, chat_history, q, result))

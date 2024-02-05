@@ -28,6 +28,9 @@ class LLMInference(metaclass=abc.ABCMeta):
 
         return self.chain
 
+    def reset(self) -> None:
+        self.chain = None
+
     def run_chain(self, chain, inputs, callbacks: Optional[List] = []):
         result = chain.invoke(inputs, {"callbacks": callbacks})
         if "text" in result:
