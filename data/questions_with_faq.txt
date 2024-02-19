@@ -1,7 +1,5 @@
 What's PCI DSS?
 Can you summarize the changes made from PCI DSS version 3.2.1 to version 4.0?
-new requirements for vulnerability assessments
-more on penetration testing
 Can entities be PCI DSS compliant if they have performed vulnerability scans at least once every three months, but do not have four “passing” scans?
 What is the meaning of “initial PCI DSS assessment”?
 Which PCI standards apply to card manufacturers, embossers, card personalizers, or entities that prepare data for card manufacturing?
