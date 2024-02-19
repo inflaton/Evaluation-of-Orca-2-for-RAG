@@ -10,3 +10,7 @@ How do PCI standards apply to organizations that develop software that runs on a
 Can card verification codes be stored for card-on-file or recurring transactions?
 If an organization provides software or functionality that runs on a consumer’s device (for example, smartphones, tablets, or laptops) and is used to accept payment account data, can the organization store card verification codes for those consumers?
 Can SAQ eligibility criteria be used for determining applicability of PCI DSS requirements for assessments documented in a Report on Compliance?
+Do PCI DSS requirements for keyed cryptographic hashing apply to previously hashed PANs?
+Are compliance certificates recognized for PCI DSS validation?
+How should payment terminals be considered during a PCI DSS assessment?
+Can a compensating control be used for requirements with a periodic or defined frequency, where an entity did not perform the activity within the required timeframe?
