@@ -1,0 +1,14 @@
+What's PCI DSS?
+Can you summarize the changes made from PCI DSS version 3.2.1 to version 4.0?
+new requirements for vulnerability assessments
+more on penetration testing
+Can entities be PCI DSS compliant if they have performed vulnerability scans at least once every three months, but do not have four “passing” scans?
+What is the meaning of “initial PCI DSS assessment”?
+Which PCI standards apply to card manufacturers, embossers, card personalizers, or entities that prepare data for card manufacturing?
+What is meant by ‘at risk’ and ‘at-risk timeframe’ referenced in the Final PFI Report?
+How does PCI DSS apply to payment terminals?
+How can hashing be used to protect Primary Account Numbers (PAN) and in what circumstances can hashed PANs be considered out of scope for PCI DSS?
+How do PCI standards apply to organizations that develop software that runs on a consumer’s device (for example, a smartphone, tablet, or laptop) and is used to accept payment card data?
+Can card verification codes be stored for card-on-file or recurring transactions?
+If an organization provides software or functionality that runs on a consumer’s device (for example, smartphones, tablets, or laptops) and is used to accept payment account data, can the organization store card verification codes for those consumers?
+Can SAQ eligibility criteria be used for determining applicability of PCI DSS requirements for assessments documented in a Report on Compliance?
