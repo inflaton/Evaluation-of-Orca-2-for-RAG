@@ -75,7 +75,7 @@ def print_llm_response(llm_response):
     for source in source_documents:
         metadata = source["metadata"] if "metadata" in source else source.metadata
         if "page" in metadata:
-            print(f"  Page:  {metadata['page']}", end="")
+            print(f"  Page:  {metadata['page'] + 1}", end="")
 
         print(
             " Source: "
