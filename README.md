@@ -9,13 +9,14 @@ app_file: app.py
 pinned: false
 license: apache-2.0
 ---
-# ChatPDF - Talk to Your PDF Files 
 
-This project uses Open AI and open-source large language models (LLMs) to enable you to talk to your own PDF files.
+# Evaluation of Orca 2 against other LLMs for Retrieval Augmented Generation
+ 
+This project contains the source code, datasets and results for the titled paper.
 
 ## How it works
 
-We're using an AI methodology, namely Conversational Retrieval Augmentation (CRAG), which uses LLMs off the shelf (i.e., without any fine-tuning), then controls their behavior through clever prompting and conditioning on private “contextual” data, e.g., texts extracted from your PDF files.
+We're using an AI methodology, namely Retrieval Augmentated Generation (RAG), which uses LLMs off the shelf (i.e., without any fine-tuning), then controls their behavior through clever prompting and conditioning on private “contextual” data, e.g., texts extracted from your PDF files.
 
 At a very high level, the workflow can be divided into three stages:
 
@@ -25,7 +26,7 @@ At a very high level, the workflow can be divided into three stages:
 
 3. Prompt execution / inference: Once the prompts have been compiled, they are submitted to a pre-trained LLM for inference—including both proprietary model APIs and open-source or self-trained models.
 
-![Conversational Retrieval Augmentation (CRAG) - Workflow Overview](./assets/crag-workflow.png)
+![Retrieval Augmentated Generation (RAG) - Workflow Overview](./assets/rag-workflow.png)
 
 Tech stack used includes LangChain, Gradio, Chroma and FAISS. 
 - LangChain is an open-source framework that makes it easier to build scalable AI/LLM apps and chatbots. 
@@ -101,11 +102,11 @@ The source code supports different LLM types - as shown at the top of `.env.exam
 # LLM_MODEL_TYPE=gpt4all-j
 # LLM_MODEL_TYPE=gpt4all
 # LLM_MODEL_TYPE=llamacpp
-# LLM_MODEL_TYPE=huggingface
+LLM_MODEL_TYPE=huggingface
 # LLM_MODEL_TYPE=mosaicml
 # LLM_MODEL_TYPE=stablelm
 # LLM_MODEL_TYPE=openllm
-LLM_MODEL_TYPE=hftgi
+# LLM_MODEL_TYPE=hftgi
 ```
 
 - By default, the app runs `microsoft/orca-2-13b` model with HF Text Generation Interface, which runs on a research server and might be down from time to time.
@@ -123,5 +124,7 @@ HUGGINGFACE_MODEL_NAME_OR_PATH="microsoft/orca-2-13b"
 # HUGGINGFACE_MODEL_NAME_OR_PATH="meta-llama/Llama-2-7b-chat-hf"
 # HUGGINGFACE_MODEL_NAME_OR_PATH="meta-llama/Llama-2-13b-chat-hf"
 # HUGGINGFACE_MODEL_NAME_OR_PATH="meta-llama/Llama-2-70b-chat-hf"
+HUGGINGFACE_MODEL_NAME_OR_PATH="microsoft/Orca-2-7b"
+# HUGGINGFACE_MODEL_NAME_OR_PATH="microsoft/Orca-2-13b"
 ```
 
